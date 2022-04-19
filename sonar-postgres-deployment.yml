@@ -25,6 +25,23 @@ spec:
                   key: password
             - name: POSTGRES_USER
               value: sonar
+          readinessProbe:
+           exec:
+             command: ["pg_isready", "-U", "sonar", "-h", "0.0.0.0", "-p", "5432"]
+           initialDelaySeconds: 35
+           periodSeconds: 10
+          livenessProbe:
+           exec:
+            command: ["pg_isready", "-U", "sonar", "-h", "0.0.0.0", "-p", "5432"]
+           initialDelaySeconds: 35
+           periodSeconds: 10
+          resources:
+            requests:
+              memory: 1000Mi
+              cpu: "250m"
+            limits:
+              memory: 2000Mi
+              cpu: "500m" 
           ports:
             - containerPort: 5432
               name: postgresport
