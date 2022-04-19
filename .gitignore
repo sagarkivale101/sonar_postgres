@@ -1,2 +1,6 @@
-.idea
-kubernetes-sonarqube.iml
+# kubectl create -f sonar-pv-postgres.yml
+# kubectl create -f sonar-pvc-postgres.yml
+# kubectl create -f sonar-postgres-deployment.yml
+# kubectl create -f sonarqube-deployment.yml
+# kubectl create -f sonarqube-service.yml
+# kubectl create -f sonar-postgres-service.yml

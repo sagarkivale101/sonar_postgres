@@ -13,6 +13,10 @@ spec:
       labels:
         name: sonarqube
     spec:
+      volumes:
+        - name: sonar-data
+          persistentVolumeClaim:
+            claimName: sonar-pvc
       containers:
         - image: sonarqube:7.9.1-community
           name: sonarqube
@@ -32,6 +36,9 @@ spec:
               memory: 2000Mi
             limits:
               memory: 2000Mi
+          volumeMounts:
+            - mountPath: "/opt/sonarqube/data/"
+              name: sonar-data
       initContainers:
         - name: sysctl
           image: busybox
